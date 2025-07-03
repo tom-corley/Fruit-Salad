@@ -1,4 +1,15 @@
-console.log("hi");
-
 const x = require('./script2.js');
 console.log(x);
+
+const fruitForm = document.querySelector("#inputSection form");
+console.log(fruitForm);
+
+fruitForm.addEventListener(
+    "submit",
+    extractFruit
+);
+
+function extractFruit(e) {
+    e.preventDefault();
+    console.log(e);
+}

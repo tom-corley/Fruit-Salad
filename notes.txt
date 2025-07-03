@@ -4,3 +4,5 @@ Bundlers are used to merge scripts together.
 npm init, initialises package.json in project
 add -y flag for quicker version that assumes some context
 
+package.json has information and settings for package
+package-lock.json has more information about dependencies of the packages
