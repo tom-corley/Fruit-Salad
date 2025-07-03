@@ -6,3 +6,14 @@ add -y flag for quicker version that assumes some context
 
 package.json has information and settings for package
 package-lock.json has more information about dependencies of the packages
+
+promises are asynchronous requests:
+    promise tells us the state of the transacation instantly
+    doSomething()
+        .then((res) => (new_res))
+        .then((new_res) => (newnew_res))
+        ...
+
+callback is when things are done out of order, can get convoluted quickly
+
+fluent api - write code closer to human english than normal code
