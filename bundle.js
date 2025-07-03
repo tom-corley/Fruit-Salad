@@ -24,17 +24,37 @@ function extractFruit(e) {
     return;
 }
 let cal = 0;
+
 function addFruit(fruit) {
+    let fruit_cals = fruit.nutritions.calories;
+    console.log(fruit_cals);
     const li = document.createElement("li");
     li.addEventListener(
         "click",
-        () => li.remove()
+        (e) => {
+            //console.log(fruit.nutritions.calories);
+            cal -= fruit.nutritions.calories;
+            fruitNutrition.textContent = "Total Calories: " + cal;
+            li.remove();
+        }
     )
     li.textContent = fruit.name;
+    fetchPic(fruit.name);
+    const pic = document.createElement("pic")
     FruitList.appendChild(li);
 
     cal += fruit.nutritions.calories;
     fruitNutrition.textContent = "Total Calories: " + cal;
+}
+
+function addPic(photo_url) {
+    console.log("now here")
+    //console.log(photo_url)
+    const pic = document.createElement("img");
+    pic.src = photo_url
+    pic.style = "{width: 50px; height: 50px}"
+    console.log(pic.src)
+    FruitList.appendChild(pic);
 }
 
 function fetchFruitData(fruit) {
@@ -42,9 +62,29 @@ function fetchFruitData(fruit) {
     // returns promise
         .then((resp) => resp.json())
         // convert the response into a json
-        .then(data => addFruit(data))
+        .then((data) => (addFruit(data)))
         // addFruit by extracting field from the json
         .catch((e) => console.log(e))
+}
+
+function fetchPic(fruit_name) {
+    console.log("here")
+    url = `https://api.pexels.com/v1/search?query=${fruit_name}`
+    console.log(url)
+    fetch(
+        `https://api.pexels.com/v1/search?query=${fruit_name}`, 
+        {
+            method: "GET",
+            headers: {
+                "Authorization": "wpTDCSLwU7SI4d9Svl4bqipenmU6AQmoDz7aYWPSP2aLotnoLp2XqTMk"
+            }
+        }
+    )
+        .then((resp) => resp.json())
+        //.then(resp => console.log(resp))
+        .then(data => data["photos"][0]["src"]["original"])
+        .then(photo_url => addPic(photo_url))
+        .catch((e) => (console.log(e)))
 }
 },{"./script2.js":2}],2:[function(require,module,exports){
 const x = 42;
