@@ -1,0 +1,24 @@
+{
+  "name": "fruitsalad",
+  "version": "1.0.0",
+  "description": "Application to find fruit data.",
+  "homepage": "https://github.com/tom-corley/Fruit-Salad#readme",
+  "bugs": {
+    "url": "https://github.com/tom-corley/Fruit-Salad/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tom-corley/Fruit-Salad.git"
+  },
+  "license": "ISC",
+  "author": "Tom Corley",
+  "type": "commonjs",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "watchify ./script.js -o bundle.js"
+  },
+  "devDependencies": {
+    "watchify": "^4.0.0"
+  }
+}

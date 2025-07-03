@@ -1,1 +1,6 @@
-Bundlers are used to group scripts together.
+Bundlers are used to merge scripts together.
+    - watchify
+
+npm init, initialises package.json in project
+add -y flag for quicker version that assumes some context
+
