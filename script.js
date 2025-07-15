@@ -9,6 +9,7 @@ fruitForm.addEventListener("submit", extractFruit);
 createForm.addEventListener("submit", createNewFruit);
 function extractFruit(e) {
     e.preventDefault();
+    console.log("here");
     fetchFruitData(e.target.fruitInput.value);
     e.target.fruitInput.value = "";
 }
@@ -32,7 +33,11 @@ async function fetchFruitData(fruit) {
 }
 async function createNewFruit(e) {
     e.preventDefault();
-    const data = {name: e.target.fruitInput.value};
+    const data = {name: e.target.fruitInput.value, calories: e.target.caloriesInput.value};
+    if (data.calories == NaN || data.calories < 0) {
+        data.calories = 50; 
+    }
+    fruitCal[data.name] = data.calories;
     const options = {
         method: "POST",
         headers: {
@@ -41,7 +46,7 @@ async function createNewFruit(e) {
         body: JSON.stringify(data)
     }
     //Make sure to add your deployed API URL in this fetch
-    const response = await fetch(`https://fruit-salad-backend-lyej.onrender.com/fruits`, options);
+    const response = await fetch(`https://fruit-7tpx.onrender.com/fruits/`, options);
     let messageStatus = document.querySelector("#message")
     if(response.status === 201) {
         e.target.fruitInput.value = ''
