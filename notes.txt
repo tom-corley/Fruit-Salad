@@ -17,3 +17,14 @@ promises are asynchronous requests:
 callback is when things are done out of order, can get convoluted quickly
 
 fluent api - write code closer to human english than normal code
+
+Testing:
+    unit testing: functionality of individual functions / classes
+    integration testing: checking that things work together
+    end-to-end/user testing: checking that the entire app experience works
+
+TDD = Test Driven Development
+    write tests for the problems you wanna solve
+        Red: Written test, fails as code not written
+        Green: Writtten code which passes text
+        Refactor: Written improved code which STILL passes test
